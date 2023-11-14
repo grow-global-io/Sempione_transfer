@@ -8,11 +8,11 @@ import Colors from '@/constants/Colors';
 const Page = () => {
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView contentContainerStyle={{ paddingBottom: 40 }}>
-        <Categories />
-        <Text style={styles.header}>Top picks in your neighbourhood</Text>
-        <Restaurants />
-        <Text style={styles.header}>Offers near you</Text>
+      <ScrollView contentContainerStyle={{ padding: 40 ,display:"flex",flexDirection:"column"}}>
+        {/* <Categories /> */}
+        {/* <Text style={styles.header}>Top picks in your neighbourhood</Text> */}
+        {/* <Restaurants /> */}
+        {/* <Text style={styles.header}>Offers near you</Text> */}
         <Restaurants />
       </ScrollView>
     </SafeAreaView>

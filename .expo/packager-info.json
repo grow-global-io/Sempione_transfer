@@ -1,9 +1,9 @@
 {
-  "expoServerPort": 19000,
-  "packagerPort": 19000,
-  "expoServerNgrokUrl": "https://mx-de9.lokesh-tamiri.galaxies-food-ui-clone-rn.exp.direct",
-  "packagerNgrokUrl": "https://mx-de9.lokesh-tamiri.galaxies-food-ui-clone-rn.exp.direct",
-  "ngrokPid": 17600,
+  "expoServerPort": null,
+  "packagerPort": null,
+  "expoServerNgrokUrl": null,
+  "packagerNgrokUrl": null,
+  "ngrokPid": null,
   "packagerPid": null,
   "webpackServerPort": null
 }

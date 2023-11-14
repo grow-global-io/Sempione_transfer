@@ -7,14 +7,15 @@ import Colors from '../constants/Colors';
 const Restaurants = () => {
   return (
     <ScrollView
-      horizontal
+      
       showsHorizontalScrollIndicator={false}
       contentContainerStyle={{
         padding: 15,
+      
       }}>
       {restaurants.map((restaurant, index) => (
         <Link href={'/details'} key={index} asChild>
-          <TouchableOpacity>
+          <TouchableOpacity style={{marginBottom:15}}>
             <View style={styles.categoryCard}>
               <Image source={restaurant.img} style={styles.image} />
               <View style={styles.categoryBox}>

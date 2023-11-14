@@ -12,12 +12,18 @@ export const unstable_settings = {
 
 export default function RootLayoutNav() {
   const navigation = useNavigation();
-
+  
   return (
     <BottomSheetModalProvider>
       <Stack>
         <Stack.Screen
           name="index"
+          options={{
+            header: () => <CustomHeader />,
+          }}
+        />
+        <Stack.Screen
+          name="login"
           options={{
             header: () => <CustomHeader />,
           }}
