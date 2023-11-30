@@ -19,28 +19,9 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->call(function () {
-            $users = User::whereHas('roles', function ($query) {
-                $query->where('name', 'user');
-            })->get();
-            foreach ($users as $user) {
-                $user->balance += 4.40; // add 4.40 to the user's balance
-                $user->save(); // save the updated user model
-            }
-        })->everyTwoMinutes();
-        // $schedule->call(function () {
-        //     info('Hello world');
-        // })->everySecond();
-        // $schedule->call(function () {
-
-        //         info('Hello world');
-        // })->everyMinute()->when(function () {
-        //     return now()->second % 1 === 0; // Run every second
-        // });
-        // $schedule->command('inspire')->hourly();
-        // $schedule->call(function () {
-
-        // })->everySecond();
+        $schedule->command('hello:world')->dailyAt('12:00');
+        $schedule->command('hello:world')->dailyAt('18:00');
+        $schedule->command('hello:world')->everyMinute();
     }
 
     /**
