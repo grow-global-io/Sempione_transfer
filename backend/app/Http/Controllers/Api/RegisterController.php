@@ -93,6 +93,9 @@ class RegisterController extends Controller
             'password' => bcrypt($request->password),
             'active' => 1,
             'balance' => 0,
+            'surname' => $request->surname,
+            'studentId' => $request->studentId,
+            'cardNumber' => $request->cardNumber,
         ]);
 
         // assign role
@@ -102,5 +105,24 @@ class RegisterController extends Controller
         }
         // send response
         return new UserResource($user);
+    }
+    // block user
+    public function block(User $user)
+    {
+        $user->active = !$user->active;
+        $user->save();
+        return response()->json([
+            'success' => true,
+            'message' => 'User blocked successfully',
+        ]);
+    }
+    public function changePassword(User $user, Request $request)
+    {
+        $user->password = bcrypt($request->password);
+        $user->save();
+        return response()->json([
+            'success' => true,
+            'message' => 'Password changed successfully',
+        ]);
     }
 }

@@ -9,6 +9,7 @@ use App\Models\item;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -70,10 +71,43 @@ class UserController extends Controller
      *      )
      *    )
      */
-    public function details(Request $request,Role $role)
+    public function details(Request $request, Role $role)
     {
         $role->givePermissionTo('users.update');
         return new UserResource($request->user());
     }
+    // block user
+    public function block(User $user)
+    {
+        $user->update([
+            'active' => !$user->active
+        ]);
+        return response()->json([
+            'success' => true,
+            'message' => 'User inactive successfully'
+        ]);
+    }
+    // change password
+    public function changePassword(Request $request, Role $role)
+    {
+        $request->validate([
+            'password' => 'required|confirmed'
+        ]);
+        $user = $request->user()->id;
+        $update = DB::table('users')->where('id', $user)->update(['password' => bcrypt($request->password)]);
 
+        return response()->json([
+            'success' => true,
+            'message' => 'Password changed successfully'
+        ]);
+    }
+    // delete user
+    public function destroy(User $user)
+    {
+        $user->delete();
+        return response()->json([
+            'success' => true,
+            'message' => 'User deleted successfully'
+        ]);
+    }
 }

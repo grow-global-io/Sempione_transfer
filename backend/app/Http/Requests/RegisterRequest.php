@@ -28,14 +28,17 @@ class RegisterRequest extends FormRequest
         return [
             'name' => 'required',
             'email' => 'required|email|unique:users,email',
-            'password' => 'required'
+            'password' => 'required',
+            'surname' => 'required',
+            'studentId' => 'required|unique:users,studentId',
+            'cardNumber' => 'required|unique:users,cardNumber',
         ];
     }
 
     public function failedValidation(Validator $validator)
     {
         // send error message
-        Helper::sendError('validation error',$validator->errors());
+        Helper::sendError('validation error', $validator->errors());
     }
 
 }
